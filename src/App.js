@@ -2,10 +2,12 @@ import React, { Suspense, useEffect, useState } from 'react';
 import './App.css';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Html } from '@react-three/drei';
+import Carousel from './Carrousel';
 
 function BoyModel() {
   const gltf = useGLTF('/cenario.glb');
-  return <primitive object={gltf.scene} />;
+  return null;
+  // return <primitive object={gltf.scene} />;
 }
 
 function CameraController() {
@@ -149,7 +151,7 @@ function App() {
 
       <div className="sections" style={{ transform: `translateY(-${currentSection * 100}vh)` }}>
         <div className="section" id="section1">
-          <h1 className="title-overlay">Hi, my <br /> name is Eduardo.</h1>
+          <h1 className="title-overlay">Hi, my <br /> name is Lorem.</h1>
           <p className="subtitle-overlay">I love creating beautiful user experiences.</p>
           <button className="cta-button">Get in touch</button>
           <div className="canvas-container">
@@ -173,8 +175,16 @@ function App() {
         </div>
 
         <div className="section" id="section3">
-          <h1>Section 3</h1>
-          <p>Content for section 3.</p>
+          <div className="section-header">
+            <div className="section-subtitle">
+              <span className="line"></span>
+              <span className="subtitle-text">Portfolio</span>
+            </div>
+            <h2 className="section-title">Some things<br />I've worked on</h2>
+            <div className="App">
+              <Carousel />
+            </div>
+          </div>
         </div>
 
         <div className="section" id="section4">

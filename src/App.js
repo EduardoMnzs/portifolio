@@ -76,14 +76,37 @@ function App() {
       }
     };
 
+    const handleMouseEnter = () => {
+      if (cursorDot) {
+        cursorDot.classList.add('expand');
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (cursorDot) {
+        cursorDot.classList.remove('expand');
+      }
+    };
+
     // Adiciona o evento de movimento do mouse após a montagem do componente
     document.addEventListener('mousemove', handleMouseMove);
 
-    // Limpa o evento ao desmontar o componente
+    // Adiciona eventos para elementos clicáveis
+    const clickableElements = document.querySelectorAll('a, button, .clickable');
+    clickableElements.forEach((element) => {
+      element.addEventListener('mouseenter', handleMouseEnter);
+      element.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    // Limpa os eventos ao desmontar o componente
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
+      clickableElements.forEach((element) => {
+        element.removeEventListener('mouseenter', handleMouseEnter);
+        element.removeEventListener('mouseleave', handleMouseLeave);
+      });
     };
-  }, []); // O array vazio garante que o efeito seja executado apenas uma vez, após a montagem
+  }, []); // O array vazio garante
 
   return (
     <div className="App">

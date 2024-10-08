@@ -17,16 +17,26 @@ html,
 }
 
 .cursor-dot {
-  position: fixed; /* Fixa a bolinha na tela */
-  top: 0;
-  left: 0;
-  width: 15px; /* Tamanho da bolinha */
+  position: fixed;
+  top: -1%;
+  left: -0.5%;
+  width: 15px;
   height: 15px;
-  background-color: #ff9100; /* Cor da bolinha */
-  border-radius: 50%; /* Torna a bolinha redonda */
-  pointer-events: none; /* Impede que a bolinha interfira em cliques */
-  transition: transform 0.1s ease-out; /* Suaviza o movimento */
-  z-index: 10000; /* Garante que a bolinha fique acima de outros elementos */
+  background-color: #ff9100;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease;
+  z-index: 10000;
+}
+
+.cursor-dot.expand {
+  top: -1.4%;
+  left: -0.6%;
+  background-color: transparent;
+  border: 5px solid #1b1f3b; /* Borda para criar o anel */
+  border-radius: 50%; /* Torna o círculo arredondado */
+  width: 20px;
+  height: 20px;
 }
 
 .navbar {

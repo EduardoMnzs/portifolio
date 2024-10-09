@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from 'react';
 import './App.css';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Html } from '@react-three/drei';
-import Carousel from './Carrousel';
+import Carousel from './Carousel';
 
 function BoyModel() {
   const gltf = useGLTF('/cenario.glb');
@@ -112,7 +112,7 @@ function App() {
 
   return (
     <div className="App">
-      <div class="cursor-dot"></div>
+      <div className="cursor-dot"></div>
       <nav className="navbar">
         <div className="logo">
           <img className="logo-img" src="/logo.svg" alt="Logo" />
@@ -121,6 +121,7 @@ function App() {
           <button className="sound-button">
             <i className="fas fa-volume-up"></i>
           </button>
+          <audio id="audio-element" src="#" loop></audio>
           <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
             <span className="bar"></span>
             <span className="bar"></span>
@@ -181,15 +182,46 @@ function App() {
               <span className="subtitle-text">Portfolio</span>
             </div>
             <h2 className="section-title">Some things<br />I've worked on</h2>
-            <div className="App">
+            <div className="carousel-container-master">
               <Carousel />
             </div>
           </div>
         </div>
 
         <div className="section" id="section4">
-          <h1>Section 4</h1>
-          <p>Content for section 4.</p>
+          <div className="section-header">
+            <div className="section-subtitle">
+              <span className="line"></span>
+              <span className="subtitle-text">Say Hello 👋</span>
+            </div>
+            <h2 className="section-title">Contact me</h2>
+            <div className="contact-container">
+              <form className="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required />
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+                <div className="social-icons">
+                  <a href="#"><i className="fab fa-twitter"></i></a>
+                  <a href="#"><i className="fab fa-github"></i></a>
+                  <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i className="fas fa-envelope"></i></a>
+                </div>
+
+                <button type="submit" className="submit-button">Submit</button>
+              </form>
+            </div>
+            <footer class="footer-container">
+              <p>© Eduardo Menezes</p>
+              <a href="#">Legal Notice</a>
+              <a href="#">Privacy Policy</a>
+            </footer>
+          </div>
         </div>
       </div>
     </div>

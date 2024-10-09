@@ -1,0 +1,213 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.carousel-container {
+    position: relative;
+}
+
+.card {
+    border: none !important;
+    margin-left: -20px;
+    background: #fff;
+    width: 350px !important;
+    height: 550px !important;
+    margin-block: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.card.focused {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    background: #1a1a2e;
+    padding: 20px;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon > i {
+    color: #fff;
+    font-size: 24px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-line {
+    color: white;
+    margin-bottom: 5px;
+    border-radius: 50px;
+}
+
+.tecnologia-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.profile-line.small {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 10px;
+    padding: 4px;
+    border: solid 1px #fff;
+    padding: 2px 10px;
+}
+
+.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image > img {
+    width: 100%;
+    max-width: 325px;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.card-content {
+    text-align: justify;
+    padding: 10px 20px;
+    height: 160px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: #f7f7f7;
+    border-top: 1px solid #ddd;
+}
+
+.code-button {
+    width: 40px;
+    height: 40px;
+    background-color: #c4c4c4;
+    border-radius: 7px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.code-button i {
+    color: #fff;
+    font-size: 18px;
+}
+
+.code-button:hover {
+    background-color: #b0b0b0;
+}
+
+.live-button {
+    background-color: #1a1a2e;
+    color: #fff;
+    border: none;
+    padding: 12px 100px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.live-button:hover {
+    background-color: #1a1a2eee;
+}
+
+.next-arrow,
+.prev-arrow {
+    cursor: pointer;
+    position: absolute;
+    bottom: -50px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.next-arrow:hover,
+.prev-arrow:hover {
+    color: #f39c12;
+}
+
+.next-arrow.disabled,
+.prev-arrow.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-arrow {
+    right: 45%;
+    cursor: pointer;
+}
+
+.prev-arrow {
+    left: 45%;
+    cursor: pointer;
+}
+
+.slick-track {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 15px;
+}
+
+.slick-dots {
+    position: static;
+}
+
+.fa-chevron-circle-right,
+.fa-chevron-circle-left {
+    color: #fff;
+    font-size: 50px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.fa-chevron-circle-right:hover,
+.fa-chevron-circle-left:hover {
+    color: #1a1a2ee3;
+}
+
+.slick-slide[data-index="7"] .card {
+    display: none !important;
+}
+
+.slick-slide[data-index="8"] .card {
+    display: none !important;
+}
+
+.slick-slide[data-index="9"] .card {
+    display: none !important;
+}
+
+.slick-slide[data-index="10"] .card {
+    display: none !important;
+}

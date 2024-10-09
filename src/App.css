@@ -7,7 +7,7 @@ html,
   margin: 0;
   scroll-behavior: smooth;
   overflow: hidden;
-  background-color: #fffcf0;
+  background-color: #1f4577;
 }
 
 ::-webkit-scrollbar {
@@ -24,7 +24,7 @@ html,
   left: -0.5%;
   width: 15px;
   height: 15px;
-  background-color: #ff9100;
+  background-color: #1b1f3b;
   border-radius: 50%;
   pointer-events: none;
   transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease;
@@ -35,8 +35,8 @@ html,
   top: -1.4%;
   left: -0.6%;
   background-color: transparent;
-  border: 5px solid #1b1f3b; /* Borda para criar o anel */
-  border-radius: 50%; /* Torna o círculo arredondado */
+  border: 5px solid #fff;
+  border-radius: 50%;
   width: 20px;
   height: 20px;
 }
@@ -72,7 +72,7 @@ html,
 
 .sound-button,
 .hamburger-button {
-  background: #ff9100;
+  background: #1b1f3b;
   border-radius: 10px;
   font-size: 1.5em;
   cursor: pointer;
@@ -110,7 +110,7 @@ html,
   left: 10%;
   z-index: 2;
   padding: 10px 20px;
-  background-color: #ff9100;
+  background-color: #1b1f3b;
   color: white;
   border: none;
   border-radius: 25px;
@@ -200,7 +200,7 @@ html,
 
 .side-menu ul li a::before {
   content: "•";
-  color: #ff9100;
+  color: #1b1f3b;
   font-size: 3rem;
   margin-right: 10px;
 }
@@ -213,7 +213,7 @@ html,
 }
 
 .social-icons i:hover {
-  color: #ff9100;
+  color: #1b1f3b;
   transform: scale(1.2);
 }
 
@@ -238,7 +238,7 @@ html,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ff9100;
+  background: #1b1f3b;
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -276,32 +276,132 @@ html,
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .section-subtitle {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  margin-left: 50px;
-  color: #ff9100;
+  margin-left: 225px;
+  color: #1b1f3b;
   font-weight: bold;
-  margin-bottom: 20px;
-  margin-top: 50px;
 }
 
 .section-subtitle .line {
   width: 30px;
   height: 1.5px;
-  background-color: #ff9100;
+  background-color: #1b1f3b;
   margin-right: 10px;
 }
 
 .section-title {
   font-size: 4.5rem;
-  margin-left: 50px;
+  margin-left: 225px;
   color: #fff;
   font-weight: 700;
   line-height: 1.2;
   margin-block: 0;
+}
+
+.contact-container {
+  max-width: 500px;
+  margin: 30px 225px;
+  background: #f9f5f0;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #666;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #f2f2f2;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #1b1f3b;
+}
+
+.contact-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.social-icons a {
+  color: #c4c4c4;
+  font-size: 24px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #1b1f3b;
+}
+
+.submit-button {
+  background-color: #1b1f3b;
+  color: #fff;
+  border: none;
+  padding: 15px 0;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #1b1f3b;
+}
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footer-container p {
+  margin: 0;
+}
+
+.footer-container a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.footer-container a:hover {
+  color: #1b1f3b;
 }

@@ -245,6 +245,18 @@ function App() {
           </div>
         </div>
       </div>
+      <svg
+        viewBox="0 0 1800 400"
+        xmlns="http://www.w3.org/2000/svg"
+        className="wave"
+        style={{ transform: 'rotate(180deg)' }}
+      >
+        <path
+          fill="#0099ff"
+          fillOpacity="1"
+          d="M0,160L60,192C120,224,240,288,360,266.7C480,245,600,139,720,128C840,117,960,203,1080,234.7C1200,267,1320,245,1380,234.7L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z " transform="rotate(18)"
+        ></path>
+      </svg>
     </div>
   );
 }

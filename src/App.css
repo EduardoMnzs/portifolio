@@ -410,3 +410,23 @@ html,
 .footer-container a:hover {
   color: #1b1f3b;
 }
+
+@keyframes moveDiagonal {
+  from {
+    transform: translate(-100%, 100%) rotate(0deg);
+  }
+  to {
+    transform: translate(100%, -100%) rotate(0deg);
+  }
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1000%; /* Ajuste conforme necessário */
+  height: auto;
+  animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 0.5, 1) forwards infinite;
+  transform-origin: center;
+  z-index: 10000;
+}

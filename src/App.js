@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState, useRef } from 'react';
 import './App.css';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Html } from '@react-three/drei';
@@ -52,6 +52,24 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const [audioAtivo, setAudioAtivo] = useState(true);
+  const audioRef = useRef(null);
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (audioAtivo) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(error => {
+          console.error('Erro ao tentar reproduzir o áudio:', error);
+        });
+      }
+      setAudioAtivo(!audioAtivo);
+    } else {
+      console.error('audioRef.current está nulo');
+    }
+  };
 
   useEffect(() => {
     const handleScroll = (event) => {
@@ -112,14 +130,17 @@ function App() {
 
   return (
     <div className="App">
+      <audio ref={audioRef} src="#" loop></audio>
       <div className="cursor-dot"></div>
       <nav className="navbar">
         <div className="logo">
           <img className="logo-img" src="/logo.svg" alt="Logo" />
         </div>
         <div className="nav-buttons">
-          <button className="sound-button">
-            <i className="fas fa-volume-up"></i>
+          <button
+            className={`sound-button ${!audioAtivo ? 'muted' : ''}`}
+            onClick={toggleAudio}>
+            <i className={`fas ${audioAtivo ? 'fa-volume-up' : 'fa-volume-mute'}`}></i>
           </button>
           <audio id="audio-element" src="#" loop></audio>
           <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
@@ -133,10 +154,10 @@ function App() {
       <div className={`side-menu ${menuOpen ? 'open' : ''}`}>
         <div className='options-side'>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#section1">Home</a></li>
+            <li><a href="#section2">About</a></li>
+            <li><a href="#section3">Work</a></li>
+            <li><a href="#section4">Contact</a></li>
           </ul>
         </div>
         <div className="social-icons">

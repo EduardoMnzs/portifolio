@@ -78,6 +78,11 @@ html,
   cursor: pointer;
   border: none;
   padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sound-button.muted {
+  background-color: #1b1f3ba8;
 }
 
 .fas {

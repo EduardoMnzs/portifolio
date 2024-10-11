@@ -15,7 +15,7 @@ html,
 }
 
 ::selection {
-  background-color: #ff91003c; /* Cor de fundo personalizada para o texto selecionado */
+  background-color: #003cff3c;
 }
 
 .cursor-dot {
@@ -127,7 +127,7 @@ html,
 .sections {
   display: flex;
   flex-direction: column;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.7s ease-in-out;
 }
 
 .section {
@@ -416,17 +416,21 @@ html,
     transform: translate(-100%, 100%) rotate(0deg);
   }
   to {
-    transform: translate(100%, -100%) rotate(0deg);
+    transform: translate(100%, -10%) rotate(0deg);
   }
 }
 
 .wave {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
-  width: 1000%; /* Ajuste conforme necessário */
+  width: 300%;
+  /*Para o futuro responsivo: width: 1000%; */
   height: auto;
-  animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 0.5, 1) forwards infinite;
   transform-origin: center;
-  z-index: 10000;
+  z-index: -10000;
+}
+
+.wave.animate {
+  animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 0.7, 2) forwards;
 }

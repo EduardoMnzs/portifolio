@@ -3,11 +3,12 @@ import './App.css';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Html } from '@react-three/drei';
 import Carousel from './Carousel';
+import AboutContent from './About';
 
 function BoyModel() {
   const gltf = useGLTF('/cenario.glb');
   return null;
-  // return <primitive object={gltf.scene} />;
+  // return <primitive object={gltf.scene} />; // Caso queira mostrar o modelo
 }
 
 function CameraController() {
@@ -27,64 +28,70 @@ function CameraController() {
   }, []);
 
   useFrame(({ camera }) => {
-    if (camera) {
-      const maxOffsetX = 3;
-      const maxOffsetY = 3;
-      const maxOffsetZ = 3;
-
-      camera.position.x +=
-        (initialPosition.x + mousePos.x * maxOffsetX - camera.position.x) * 0.05;
-      camera.position.y +=
-        (initialPosition.y + mousePos.y * maxOffsetY - camera.position.y) * 0.05;
-      camera.position.z +=
-        (initialPosition.z + mousePos.x * maxOffsetZ - camera.position.z) * 0.05;
-
-      camera.lookAt(0, 0, 0);
-    }
+    const maxOffset = { x: 3, y: 3, z: 3 };
+    camera.position.x += (initialPosition.x + mousePos.x * maxOffset.x - camera.position.x) * 0.05;
+    camera.position.y += (initialPosition.y + mousePos.y * maxOffset.y - camera.position.y) * 0.05;
+    camera.position.z += (initialPosition.z + mousePos.x * maxOffset.z - camera.position.z) * 0.05;
+    camera.lookAt(0, 0, 0);
   });
 
   return null;
 }
 
 function App() {
-  const sections = ['section1', 'section2', 'section3', 'section4'];
+  const sections = ['Home', 'About', 'Work', 'Contact'];
   const [currentSection, setCurrentSection] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [audioAtivo, setAudioAtivo] = useState(true);
+  const waveRef = useRef(null);
+  const audioRef = useRef(null);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  const [audioAtivo, setAudioAtivo] = useState(true);
-  const audioRef = useRef(null);
 
   const toggleAudio = () => {
     if (audioRef.current) {
       if (audioAtivo) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play().catch(error => {
-          console.error('Erro ao tentar reproduzir o áudio:', error);
-        });
+        audioRef.current.play().catch((error) => console.error('Erro ao tentar reproduzir o áudio:', error));
       }
       setAudioAtivo(!audioAtivo);
-    } else {
-      console.error('audioRef.current está nulo');
+    }
+  };
+
+  const handleNavClick = (sectionIndex) => {
+    if (waveRef.current) {
+      waveRef.current.classList.remove('animate');
+      waveRef.current.style.zIndex = 10000;
+
+      setTimeout(() => {
+        waveRef.current.classList.add('animate');
+      }, 50);
+
+      setTimeout(() => {
+        setCurrentSection(sectionIndex);
+      }, 1500);
+    }
+  };
+
+  const handleAnimationEnd = () => {
+    if (waveRef.current) {
+      waveRef.current.style.zIndex = -10000;
+      waveRef.current.classList.remove('animate');
     }
   };
 
   useEffect(() => {
     const handleScroll = (event) => {
-      if (event.deltaY > 0) {
-        // Scroll para baixo
-        setCurrentSection((prevSection) => Math.min(prevSection + 1, sections.length - 1));
-      } else {
-        // Scroll para cima
-        setCurrentSection((prevSection) => Math.max(prevSection - 1, 0));
-      }
+      setCurrentSection((prevSection) => {
+        if (event.deltaY > 0) return Math.min(prevSection + 1, sections.length - 1);
+        return Math.max(prevSection - 1, 0);
+      });
     };
 
     window.addEventListener('wheel', handleScroll);
     return () => window.removeEventListener('wheel', handleScroll);
-  }, []);
+  }, [sections.length]);
 
   useEffect(() => {
     const cursorDot = document.querySelector('.cursor-dot');
@@ -96,29 +103,17 @@ function App() {
       }
     };
 
-    const handleMouseEnter = () => {
-      if (cursorDot) {
-        cursorDot.classList.add('expand');
-      }
-    };
+    const handleMouseEnter = () => cursorDot?.classList.add('expand');
+    const handleMouseLeave = () => cursorDot?.classList.remove('expand');
 
-    const handleMouseLeave = () => {
-      if (cursorDot) {
-        cursorDot.classList.remove('expand');
-      }
-    };
-
-    // Adiciona o evento de movimento do mouse após a montagem do componente
     document.addEventListener('mousemove', handleMouseMove);
 
-    // Adiciona eventos para elementos clicáveis
     const clickableElements = document.querySelectorAll('a, button, .clickable');
     clickableElements.forEach((element) => {
       element.addEventListener('mouseenter', handleMouseEnter);
       element.addEventListener('mouseleave', handleMouseLeave);
     });
 
-    // Limpa os eventos ao desmontar o componente
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       clickableElements.forEach((element) => {
@@ -126,23 +121,21 @@ function App() {
         element.removeEventListener('mouseleave', handleMouseLeave);
       });
     };
-  }, []); // O array vazio garante
+  }, []);
 
   return (
     <div className="App">
       <audio ref={audioRef} src="#" loop></audio>
       <div className="cursor-dot"></div>
+
       <nav className="navbar">
         <div className="logo">
           <img className="logo-img" src="/logo.svg" alt="Logo" />
         </div>
         <div className="nav-buttons">
-          <button
-            className={`sound-button ${!audioAtivo ? 'muted' : ''}`}
-            onClick={toggleAudio}>
+          <button className={`sound-button ${!audioAtivo ? 'muted' : ''}`} onClick={toggleAudio}>
             <i className={`fas ${audioAtivo ? 'fa-volume-up' : 'fa-volume-mute'}`}></i>
           </button>
-          <audio id="audio-element" src="#" loop></audio>
           <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
             <span className="bar"></span>
             <span className="bar"></span>
@@ -152,23 +145,24 @@ function App() {
       </nav>
 
       <div className={`side-menu ${menuOpen ? 'open' : ''}`}>
-        <div className='options-side'>
+        <div className="options-side">
           <ul>
-            <li><a href="#section1">Home</a></li>
-            <li><a href="#section2">About</a></li>
-            <li><a href="#section3">Work</a></li>
-            <li><a href="#section4">Contact</a></li>
+            {sections.map((section, index) => (
+              <li key={section}>
+                <a href={`#${section}`} onClick={() => handleNavClick(index)}>
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="social-icons">
-          <i className="fab fa-twitter"></i>
           <i className="fab fa-github"></i>
+          <i className="fab fa-instagram"></i>
           <i className="fab fa-linkedin"></i>
           <i className="fas fa-envelope"></i>
         </div>
-        <div className="footer-text">
-          © 2024 by Eduardo Menezes.
-        </div>
+        <div className="footer-text">© 2024 by Eduardo Menezes.</div>
       </div>
 
       <div className="sections" style={{ transform: `translateY(-${currentSection * 100}vh)` }}>
@@ -192,8 +186,7 @@ function App() {
         </div>
 
         <div className="section" id="section2">
-          <h1>Section 2</h1>
-          <p>Content for section 2.</p>
+          <AboutContent />
         </div>
 
         <div className="section" id="section3">
@@ -218,18 +211,18 @@ function App() {
             <h2 className="section-title">Contact me</h2>
             <div className="contact-container">
               <form className="contact-form">
-                <label for="name">Name:</label>
+                <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" required />
 
-                <label for="email">Email:</label>
+                <label htmlFor="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Your Email" required />
 
-                <label for="message">Message:</label>
+                <label htmlFor="message">Message:</label>
                 <textarea id="message" name="message" placeholder="Your Message" required></textarea>
 
                 <div className="social-icons">
-                  <a href="#"><i className="fab fa-twitter"></i></a>
                   <a href="#"><i className="fab fa-github"></i></a>
+                  <a href="#"><i className="fab fa-instagram"></i></a>
                   <a href="#"><i className="fab fa-linkedin-in"></i></a>
                   <a href="#"><i className="fas fa-envelope"></i></a>
                 </div>
@@ -237,7 +230,7 @@ function App() {
                 <button type="submit" className="submit-button">Submit</button>
               </form>
             </div>
-            <footer class="footer-container">
+            <footer className="footer-container">
               <p>© Eduardo Menezes</p>
               <a href="#">Legal Notice</a>
               <a href="#">Privacy Policy</a>
@@ -245,17 +238,26 @@ function App() {
           </div>
         </div>
       </div>
-      <svg
-        viewBox="0 0 1800 400"
-        xmlns="http://www.w3.org/2000/svg"
-        className="wave"
-        style={{ transform: 'rotate(180deg)' }}
-      >
+
+      <svg ref={waveRef} onAnimationEnd={handleAnimationEnd} viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" className="wave">
+        <defs>
+          <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: "#1b1f3b", stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: "#1b1f3b", stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
         <path
-          fill="#0099ff"
-          fillOpacity="1"
-          d="M0,160L60,192C120,224,240,288,360,266.7C480,245,600,139,720,128C840,117,960,203,1080,234.7C1200,267,1320,245,1380,234.7L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z " transform="rotate(18)"
-        ></path>
+          fill="url(#blueGradient)"
+          d="M300,100 
+        C360,60, 450,80, 480,150
+        C510,220, 470,280, 430,320
+        C390,360, 450,440, 380,490
+        C310,540, 230,510, 180,460
+        C130,410, 100,340, 140,280
+        C180,220, 80,160, 170,120
+        C260,80, 240,140, 300,100
+        Z"
+        />
       </svg>
     </div>
   );

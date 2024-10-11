@@ -432,5 +432,5 @@ html,
 }
 
 .wave.animate {
-  animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 0.7, 2) forwards;
+  animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 1, 2) forwards;
 }

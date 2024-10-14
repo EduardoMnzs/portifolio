@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
+svg text {
+    font-family: "Electrolize", sans-serif;
+    fill: #34bfff;
+    font-weight: bold;
+}
+
+#about-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    margin-left: 150px;
+}
+
+#about-content-container svg {
+    margin-bottom: -40px;
+}
+
+#about-section-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #34bfff;
+}
+
+.about-section text {
+    font-size: 9px;
+    font-weight: bold;
+    fill: #34bfff;
+} 
+
+/* Animação para polylines */
+.animated-polyline {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s ease infinite;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Animação de entrada para textos */
+.animated-text {
+    opacity: 0;
+    animation: Pisca 2s ease 0s infinite normal none;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animação de escala para retângulos */
+.animated-rect {
+    transform: scale(0);
+    transform-origin: center;
+    animation: Slide 3s ease 0s normal both infinite;
+    animation-delay: 1.2s;
+}
+
+@keyframes Slide {
+    0% {
+      transform: translateX(-10px);
+    }
+  
+    100% {
+      transform: translateX(0px);
+    }
+  }
+
+@keyframes Pisca {
+    0% {
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 0.2;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }

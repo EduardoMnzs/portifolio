@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.css';
-import perfilImg from './perfil.png';
+import perfilImg from './img/perfil.png';
 
 const AboutContent = () => {
     return (
@@ -18,20 +18,20 @@ const AboutContent = () => {
                 <polyline className="animated-polyline" fill="none" stroke="#34bfff" strokeWidth="1.5"
                     points="5,0 80,0 85,5 85,95 5,95 0,90 0,5 5,0" />
 
-                <image href={perfilImg} x="0" y="0" width="85" height="95" />
+                <image href={perfilImg} x="3" y="-1" width="95" height="95" />
 
                 <polyline className="animated-polyline" fill="rgba(0, 88, 165, 0.2)" stroke="#34bfff" strokeWidth="1.5"
                     points="85,35 130,35 135,30 280,30 285,35 285,95 85,95 85,65" />
 
                 <g>
-                    <text className="animated-text" x="95" y="60" fill="#34bfff" fontSize="8" fontWeight="bold">Name:</text>
-                    <text className="animated-text" x="95" y="74" fill="#34bfff" fontSize="12" fontWeight="bold">Eduardo</text>
+                    <text className="animated-text" x="105" y="60" fill="#34bfff" fontSize="8" fontWeight="bold">Name:</text>
+                    <text className="animated-text" x="105" y="74" fill="#34bfff" fontSize="12" fontWeight="bold">Eduardo</text>
 
-                    <text className="animated-text" x="160" y="60" fill="#34bfff" fontSize="8" fontWeight="bold">Age:</text>
-                    <text className="animated-text" x="160" y="74" fill="#34bfff" fontSize="12" fontWeight="bold">20</text>
+                    <text className="animated-text" x="170" y="60" fill="#34bfff" fontSize="8" fontWeight="bold">Age:</text>
+                    <text className="animated-text" x="170" y="74" fill="#34bfff" fontSize="12" fontWeight="bold">20</text>
 
-                    <text className="animated-text" x="210" y="60" fill="#34bfff" fontSize="8" fontWeight="bold">From:</text>
-                    <text className="animated-text" x="210" y="74" fill="#34bfff" fontSize="12" fontWeight="bold">Brazil</text>
+                    <text className="animated-text" x="220" y="60" fill="#34bfff" fontSize="8" fontWeight="bold">From:</text>
+                    <text className="animated-text" x="220" y="74" fill="#34bfff" fontSize="12" fontWeight="bold">Brazil</text>
                 </g>
             </svg>
 
@@ -92,6 +92,12 @@ const AboutContent = () => {
                 {/* Seção com ícone de pessoa e descrição */}
                 <g transform="translate(20, 40)">
                     <rect className="animated-text" x="5" y="-5" width="40" height="40" fill="rgba(52, 191, 255, 0.2)" rx="10" ry="10" />
+
+                    <foreignObject className='animated-text' x="12" y="5" width="30" height="30">
+                        <i className="fa fa-code" style={{ color: '#34bfff', fontSize: '20px' }}></i>
+                    </foreignObject>
+
+
                     <text className="animated-text" x="5" y="20" fill="#34bfff"><i className='fa fa-rocket'></i></text>
                     <text className="animated-text" x="50" y="15" fill="#34bfff">
                         Lorem Ipsum is simply dummy text of the printing
@@ -104,24 +110,33 @@ const AboutContent = () => {
                 {/* Seção com ícone de coração e descrição */}
                 <g transform="translate(20, 80)">
                     <rect className="animated-text" x="225" y="-5" width="40" height="40" fill="rgba(52, 191, 255, 0.2)" rx="10" ry="10" />
+
+                    <foreignObject className='animated-text' x="234" y="4" width="30" height="30">
+                        <i className="  fa fa-star" style={{ color: '#34bfff', fontSize: '20px' }}></i>
+                    </foreignObject>
+
                     <text className="animated-text" x="165" y="20" fill="#34bfff"></text>
                     <text className="animated-text" x="5" y="15" fill="#34bfff">
-                    Lorem Ipsum is simply dummy text of the printing
+                        Lorem Ipsum is simply dummy text of the printing
                     </text>
                     <text className="animated-text" x="5" y="25" fill="#34bfff">
-                    and typesetting industry.
+                        and typesetting industry.
                     </text>
                 </g>
 
                 {/* Seção com ícone de foguete e descrição */}
                 <g transform="translate(20, 120)">
                     <rect className="animated-text" x="5" y="-5" width="40" height="40" fill="rgba(52, 191, 255, 0.2)" rx="10" ry="10" />
-                    <text className="animated-text" x="5" y="20" fill="#34bfff"></text>
+
+                    <foreignObject className='animated-text' x="14  " y="5" width="20" height="20">
+                        <i className="fas fa-rocket" style={{ color: '#34bfff', fontSize: '20px' }}></i>
+                    </foreignObject>
+
                     <text className="animated-text" x="50" y="15" fill="#34bfff">
-                    Lorem Ipsum is simply dummy text of the printing
+                        Lorem Ipsum is simply dummy text of the printing
                     </text>
                     <text className="animated-text" x="50" y="25" fill="#34bfff">
-                    and typesetting industry.
+                        and typesetting industry.
                     </text>
                 </g>
             </svg>

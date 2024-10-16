@@ -148,7 +148,7 @@ function App() {
         <div className="options-side">
           <ul>
             {sections.map((section, index) => (
-              <li key={section}>
+              <li key={section} className={currentSection === index ? 'active' : ''}>
                 <a href={`#${section}`} onClick={() => handleNavClick(index)}>
                   {section.charAt(0).toUpperCase() + section.slice(1)}
                 </a>
@@ -170,6 +170,20 @@ function App() {
           <h1 className="title-overlay">Hi, my <br /> name is Lorem.</h1>
           <p className="subtitle-overlay">I love creating beautiful user experiences.</p>
           <button className="cta-button">Get in touch</button>
+          <div className="svg-scroll-container">
+          <svg width="50" height="70" viewBox="0 0 75 5" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="0" width="30" height="50" rx="15" ry="15" fill='none' stroke="white" strokeWidth="3" />
+            <circle cx="25" cy="15" r="4" fill="white">
+              <animate
+                attributeName="cy"
+                from="15"
+                to="35"
+                dur="1.5s"
+                repeatCount="indefinite"
+              />
+            </circle>
+          </svg>
+          </div>
           <div className="canvas-container">
             <Canvas camera={{ position: [-10, 5, 20], fov: 2 }}>
               <ambientLight intensity={0.4} />

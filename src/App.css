@@ -70,6 +70,17 @@ html,
   height: 50px;
 }
 
+.svg-scroll-container {
+  position: absolute;
+  bottom: 50px; /* Ajuste conforme necessário para centralizar na altura */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0%;
+}
+
 .sound-button,
 .hamburger-button {
   background: #1b1f3b;
@@ -165,6 +176,26 @@ html,
   z-index: 1;
 }
 
+.options-side ul li {
+  position: relative;
+}
+
+.options-side ul li.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: #1b1f3b;
+  border-radius: 50%;
+}
+
+.options-side ul li.active a {
+  margin-left: 10px;
+}
+
 .options-side {
   margin-block: 120px;
 }
@@ -204,10 +235,10 @@ html,
 }
 
 .side-menu ul li a::before {
-  content: "•";
+  content: " ";
   color: #1b1f3b;
   font-size: 3rem;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .social-icons {
@@ -432,5 +463,5 @@ html,
 }
 
 .wave.animate {
-  animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 1, 2) forwards;
+  animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 0.5, 2) forwards;
 }

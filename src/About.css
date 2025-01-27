@@ -20,7 +20,7 @@ svg text {
 }
 
 #about-section-title {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     color: #34bfff;
 }
@@ -35,7 +35,7 @@ svg text {
 .animated-polyline {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: draw 2s ease infinite;
+    animation: draw 3s ease infinite;
 }
 
 @keyframes draw {

@@ -4,11 +4,12 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Html } from '@react-three/drei';
 import Carousel from './Carousel';
 import AboutContent from './About';
+import * as THREE from 'three';
 
 function BoyModel() {
-  const gltf = useGLTF('/cenario.glb');
-  return null;
-  // return <primitive object={gltf.scene} />; // Caso queira mostrar o modelo
+  const gltf = useGLTF('/astro.glb');
+  // return null;
+  return <primitive object={gltf.scene} />; // Caso queira mostrar o modelo
 }
 
 function CameraController() {
@@ -36,6 +37,31 @@ function CameraController() {
   });
 
   return null;
+}
+
+function Stars() {
+  const [starGeometry] = useState(() => {
+    const geometry = new THREE.BufferGeometry();
+    const starVertices = [];
+    for (let i = 0; i < 500000; i++) {
+      const x = (Math.random() - 0.5) * 200; // Área X
+      const y = (Math.random() - 0.5) * 200; // Área Y
+      const z = (Math.random() - 0.5) * 200; // Área Z
+      starVertices.push(x, y, z);
+    }
+    geometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(starVertices, 3)
+    );
+    return geometry;
+  });
+
+  const starMaterial = new THREE.PointsMaterial({
+    color: 0xffffff, // Cor branca
+    size: 0.5, // Tamanho de cada estrela
+  });
+
+  return <points geometry={starGeometry} material={starMaterial} />;
 }
 
 function App() {
@@ -130,7 +156,7 @@ function App() {
 
       <nav className="navbar">
         <div className="logo">
-          <img className="logo-img" src="/logo.svg" alt="Logo" />
+          {/* <img className="logo-img" src="/logo.svg" alt="Logo" /> */}
         </div>
         <div className="nav-buttons">
           <button className={`sound-button ${!audioAtivo ? 'muted' : ''}`} onClick={toggleAudio}>
@@ -167,22 +193,22 @@ function App() {
 
       <div className="sections" style={{ transform: `translateY(-${currentSection * 100}vh)` }}>
         <div className="section" id="section1">
-          <h1 className="title-overlay">Hi, my <br /> name is Lorem.</h1>
+          <h1 className="title-overlay">Hi, my <br /> name is Eduardo.</h1>
           <p className="subtitle-overlay">I love creating beautiful user experiences.</p>
           <button className="cta-button">Get in touch</button>
           <div className="svg-scroll-container">
-          <svg width="50" height="70" viewBox="0 0 75 5" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="0" width="30" height="50" rx="15" ry="15" fill='none' stroke="white" strokeWidth="3" />
-            <circle cx="25" cy="15" r="4" fill="white">
-              <animate
-                attributeName="cy"
-                from="15"
-                to="35"
-                dur="1.5s"
-                repeatCount="indefinite"
-              />
-            </circle>
-          </svg>
+            <svg width="50" height="70" viewBox="0 0 75 5" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="0" width="30" height="50" rx="15" ry="15" fill='none' stroke="white" strokeWidth="3" />
+              <circle cx="25" cy="15" r="4" fill="white">
+                <animate
+                  attributeName="cy"
+                  from="15"
+                  to="35"
+                  dur="1.5s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </svg>
           </div>
           <div className="canvas-container">
             <Canvas camera={{ position: [-10, 5, 20], fov: 2 }}>
@@ -193,6 +219,7 @@ function App() {
               <hemisphereLight skyColor={'#ffffff'} groundColor={'#b97a20'} intensity={0.6} />
               <CameraController />
               <Suspense fallback={<Html>Loading...</Html>}>
+                <Stars /> {/* Adicionando o céu estrelado */}
                 <BoyModel />
               </Suspense>
             </Canvas>

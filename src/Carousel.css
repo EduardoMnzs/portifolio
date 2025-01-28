@@ -91,6 +91,7 @@
 }
 
 .card-content {
+    margin-top: -15px;
     text-align: justify;
     padding: 10px 20px;
     height: 160px;

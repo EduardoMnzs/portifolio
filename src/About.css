@@ -1,90 +1,160 @@
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
 
 svg text {
-    font-family: "Electrolize", sans-serif;
-    fill: #34bfff;
-    font-weight: bold;
+  font-family: "Electrolize", sans-serif;
+  fill: #34bfff;
+  font-weight: bold;
 }
 
 #about-content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    margin-left: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  margin-left: 7%;
 }
 
 #about-content-container svg {
-    margin-bottom: -40px;
+  margin-bottom: -40px;
 }
 
 #about-section-title {
-    font-size: 12px;
-    font-weight: bold;
-    color: #34bfff;
+  font-size: 12px;
+  font-weight: bold;
+  color: #34bfff;
 }
 
 .about-section text {
-    font-size: 9px;
-    font-weight: bold;
-    fill: #34bfff;
-} 
+  font-size: 9px;
+  font-weight: bold;
+  fill: #34bfff;
+}
 
 /* Animação para polylines */
 .animated-polyline {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: draw 3s ease infinite;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s ease infinite;
 }
 
 @keyframes draw {
-    to {
-        stroke-dashoffset: 0;
-    }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Animação de entrada para textos */
 .animated-text {
-    opacity: 0;
-    animation: Pisca 2s ease 0s infinite normal none;
-    animation-delay: 1s;
+  opacity: 0;
+  animation: Pisca 2s ease 0s infinite normal none;
+  animation-delay: 1s;
 }
 
 @keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Animação de escala para retângulos */
 .animated-rect {
-    transform: scale(0);
-    transform-origin: center;
-    animation: Slide 3s ease 0s normal both infinite;
-    animation-delay: 1.2s;
+  transform: scale(0);
+  transform-origin: center;
+  animation: Slide 3s ease 0s normal both infinite;
+  animation-delay: 1.2s;
 }
 
 @keyframes Slide {
-    0% {
-      transform: translateX(-10px);
-    }
-  
-    100% {
-      transform: translateX(0px);
-    }
+  0% {
+    transform: translateX(-10px);
   }
 
-@keyframes Pisca {
-    0% {
-      opacity: 1;
-    }
-  
-    50% {
-      opacity: 0.2;
-    }
-  
-    100% {
-      opacity: 1;
-    }
+  100% {
+    transform: translateX(0px);
   }
+}
+
+@keyframes Pisca {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 890px) {
+  #about-content-container {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 670px) {
+  #about-content-container svg {
+    width: 590px;
+}
+}
+
+@media (max-width: 600px) {
+  #about-content-container svg {
+    width: 510px;
+  }
+
+  #about-content-container svg {
+    margin-bottom: -66px;
+}
+
+  #about-content-container {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 515px) {
+  #about-content-container svg {
+    width: 450px;
+  }
+
+  #about-content-container svg {
+    margin-bottom: -96px;
+  }
+
+  #about-content-container {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  #about-content-container svg {
+    width: 400px;
+  }
+
+  #about-content-container svg {
+    margin-bottom: -126px;
+  }
+
+  #about-content-container {
+    margin-left: 20px;
+    margin-top: -125px;
+  }
+}
+
+@media (max-width: 400px) {
+  #about-content-container svg {
+    width: 350px;
+  }
+
+  #about-content-container svg {
+    margin-bottom: -140px;
+  }
+
+  #about-content-container {
+    margin-left: 0;
+    margin-top: -125px;
+  }
+}

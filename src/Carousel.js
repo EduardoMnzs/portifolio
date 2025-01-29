@@ -114,7 +114,7 @@ const Carousel = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 740,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -138,9 +138,9 @@ const Carousel = () => {
   const cards = [
     { id: 1, profile: 'fas fa-robot', title: 'Uni Recognition', content: 'Content 1', technology1: 'C', technology2: 'C++', technology3: 'Flask', technologyplus: 'Postgress', img: './static/img/recog.png', text: 'Uni Recognition is an AI-based project that uses ESP-32 Cam for facial recognition to automate student attendance. Developed with Flask and PostgreSQL, it streamlines attendance management in educational institutions.' },
 
-    { id: 2, profile: 'fas fa-gamepad', title: 'Laser Killer', content: 'Content 2', technology1: 'C', technology2: 'C++', technology3: 'Flask', technologyplus: 'Postgress', img: './static/img/laser.png', text: 'Laser Killer is a project from the Agile Project Factory course designed to identify weeds using AI and an ESP-32 Cam, eliminating them with a laser. Developed with Flask and PostgreSQL, it offers an innovative, automated solution for weed control.' },
+    { id: 2, profile: 'fas fa-gamepad', title: 'Laser Killer', content: 'Content 2', technology1: 'C', technology2: 'C++', technology3: 'Flask', technologyplus: 'Postgress', img: './static/img/laser.png', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet tempor placerat. Mauris vel ipsum et est iaculis fringilla. Vestibulum aliquet consectetur aliquam. Sed arcu lectus, dapibus quis enim quis, molestie convallis urna.' },
 
-    { id: 3, profile: 'far fa-comments', title: 'Pandora', content: 'Content 3', technology1: 'JS', technology2: 'HTML', technology3: 'CSS', technologyplus: '+', img: './static/img/pandora.png', text: 'Pandora is an intelligent voice assistant project that uses Python to identify voices and provide responses. It integrates the Gemini API for generating answers and the ElevenLabs API for voice synthesis, delivering a seamless and natural voice interaction experience.' },
+    { id: 3, profile: 'far fa-comments', title: 'Pandora', content: 'Content 3', technology1: 'Python', technology2: 'API Gemini', technology3: 'API ElevenLabs', technologyplus: '+', img: './static/img/pandora.png', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet tempor placerat. Mauris vel ipsum et est iaculis fringilla. Vestibulum aliquet consectetur aliquam. Sed arcu lectus, dapibus quis enim quis, molestie convallis urna.' },
 
     { id: 4, profile: 'fas fa-laptop-code', title: 'Landing Page', content: 'Content 5', technology1: 'JS', technology2: 'HTML', technology3: 'CSS', technologyplus: '+', img: './static/img/vision.png', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet tempor placerat. Mauris vel ipsum et est iaculis fringilla. Vestibulum aliquet consectetur aliquam. Sed arcu lectus, dapibus quis enim quis, molestie convallis urna.' },
 

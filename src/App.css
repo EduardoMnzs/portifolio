@@ -7,7 +7,7 @@ html,
   margin: 0;
   scroll-behavior: smooth;
   overflow: hidden;
-  background-color: #001229;
+  background-color: #00060e;
 }
 
 ::-webkit-scrollbar {
@@ -24,7 +24,7 @@ html,
   left: -0.5%;
   width: 15px;
   height: 15px;
-  background-color: #1b1f3b;
+  background-color: #001229;
   border-radius: 50%;
   pointer-events: none;
   transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease;
@@ -72,7 +72,8 @@ html,
 
 .svg-scroll-container {
   position: absolute;
-  bottom: 50px; /* Ajuste conforme necessário para centralizar na altura */
+  bottom: 50px;
+  /* Ajuste conforme necessário para centralizar na altura */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -83,7 +84,7 @@ html,
 
 .sound-button,
 .hamburger-button {
-  background: #1b1f3b;
+  background: #001229;
   border-radius: 10px;
   font-size: 1.5em;
   cursor: pointer;
@@ -93,7 +94,7 @@ html,
 }
 
 .sound-button.muted {
-  background-color: #1b1f3ba8;
+  background-color: #0012292a;
 }
 
 .fas {
@@ -125,8 +126,8 @@ html,
   top: 65%;
   left: 10%;
   z-index: 2;
-  padding: 10px 20px;
-  background-color: #1b1f3b;
+  padding: 15px 15px;
+  background-color: #001229;
   color: white;
   border: none;
   border-radius: 25px;
@@ -188,7 +189,7 @@ html,
   transform: translateY(-50%);
   width: 10px;
   height: 10px;
-  background-color: #1b1f3b;
+  background-color: #001229;
   border-radius: 50%;
 }
 
@@ -226,17 +227,17 @@ html,
 }
 
 .side-menu ul li a {
-  color: #1b1f3b;
+  color: #001229;
   text-decoration: none;
   font-size: 2rem;
-  font-weight:625;
+  font-weight: 625;
   display: flex;
   align-items: center;
 }
 
 .side-menu ul li a::before {
   content: " ";
-  color: #1b1f3b;
+  color: #001229;
   font-size: 3rem;
   margin-right: 15px;
 }
@@ -249,7 +250,7 @@ html,
 }
 
 .social-icons i:hover {
-  color: #1b1f3b;
+  color: #001229;
   transform: scale(1.2);
 }
 
@@ -274,7 +275,7 @@ html,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #1b1f3b;
+  background: #001229;
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -334,6 +335,7 @@ html,
 .section-title {
   font-size: 4.5rem;
   margin-left: 225px;
+  margin-bottom: 15px;
   color: #fff;
   font-weight: 700;
   line-height: 1.2;
@@ -397,11 +399,11 @@ html,
 }
 
 .social-icons a:hover {
-  color: #1b1f3b;
+  color: #001229;
 }
 
 .submit-button {
-  background-color: #1b1f3b;
+  background-color: #001229;
   color: #fff;
   border: none;
   padding: 15px 0;
@@ -412,7 +414,7 @@ html,
 }
 
 .submit-button:hover {
-  background-color: #1b1f3b;
+  background-color: #001229;
 }
 
 .footer-container {
@@ -447,6 +449,7 @@ html,
   from {
     transform: translate(-100%, 100%) rotate(0deg);
   }
+
   to {
     transform: translate(100%, -10%) rotate(0deg);
   }
@@ -466,3 +469,115 @@ html,
 .wave.animate {
   animation: moveDiagonal 10s cubic-bezier(0.1, 0.1, 0.5, 2) forwards;
 }
+
+@media (max-width: 950px) {
+  .section-title {
+    font-size: 3em;
+    margin-left: 35px;
+    margin-bottom: 15px;
+  }
+
+  .section-subtitle {
+    font-size: 1.2em;
+    margin-left: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-overlay {
+    font-size: 3em;
+    top: 5%;
+    left: 5%;
+  }
+
+  .subtitle-overlay {
+    font-size: 1.5em;
+    top: 17%;
+    left: 5%;
+  }
+
+  .cta-button {
+    top: 30%;
+    left: 5%;
+    padding: 15px 15px;
+    font-size: 1em;
+  }
+
+  .section-title {
+    font-size: 3em;
+    margin-left: 35px;
+    margin-bottom: 15px;
+  }
+
+  .section-subtitle {
+    font-size: 1.2em;
+    margin-left: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-overlay {
+    top: 5%;
+    left: 5%;
+  }
+
+  .subtitle-overlay {
+    top: 17%;
+    left: 5%;
+  }
+
+  .cta-button {
+    top: 30%;
+    left: 5%;
+    padding: 15px 15px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    margin-inline: 20px;
+  }
+
+  .nav-buttons {
+    padding-right: 40px;
+  }
+}
+
+/* Tornando a seção responsiva */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+  }
+}
+
+/* Ajustes para o menu lateral */
+@media (max-width: 768px) {
+  .side-menu {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .side-menu {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 420px) {
+  .subtitle-overlay {
+    top: 25%;
+  }
+
+  .cta-button {
+    top: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .side-menu {
+    width: 85%;
+  }
+}
+
+@media (max-width: 900px) {}

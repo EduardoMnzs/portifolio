@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState, useRef } from 'react';
 import './App.css';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, Html } from '@react-three/drei';
 import Carousel from './Carousel';
 import AboutContent from './About';
@@ -8,28 +8,67 @@ import * as THREE from 'three';
 
 function BoyModel() {
   const gltf = useGLTF('/astro.glb');
-  // return null;
-  return <primitive object={gltf.scene} />; // Caso queira mostrar o modelo
+  const [position, setPosition] = useState([0, 0, 0]);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      if (window.innerWidth < 768) {
+        setPosition([-1.5, 0.3, 0]); // Move mais para a esquerda em telas pequenas
+      } else {
+        setPosition([0, 0, 0]); // Posição padrão
+      }
+    };
+
+    updatePosition(); // Chamar uma vez ao montar
+    window.addEventListener('resize', updatePosition);
+
+    return () => window.removeEventListener('resize', updatePosition);
+  }, []);
+
+  return <primitive object={gltf.scene} position={position} />;
 }
 
 function CameraController() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const initialPosition = { x: -50, y: 5, z: 30 };
+  const [screenSize, setScreenSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+
+  const initialPosition = screenSize.width < 768
+    ? { x: -70, y: 25, z: 40 }  // Posição para telas menores
+    : { x: -50, y: 5, z: 30 };
+
+  const maxOffset = { x: 3, y: 3, z: 3 };
 
   useEffect(() => {
+    const handleResize = () => setScreenSize({ width: window.innerWidth, height: window.innerHeight });
+
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
-      const x = (clientX / window.innerWidth) * 2 - 1;
-      const y = -(clientY / window.innerHeight) * 2 + 1;
+      const x = (clientX / screenSize.width) * 2 - 1;
+      const y = -(clientY / screenSize.height) * 2 + 1;
       setMousePos({ x, y });
     };
 
+    const handleTouchMove = (event) => {
+      if (event.touches.length > 0) {
+        const { clientX, clientY } = event.touches[0];
+        const x = (clientX / screenSize.width) * 2 - 1;
+        const y = -(clientY / screenSize.height) * 2 + 1;
+        setMousePos({ x, y });
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [screenSize.width, screenSize.height]);
 
   useFrame(({ camera }) => {
-    const maxOffset = { x: 3, y: 3, z: 3 };
     camera.position.x += (initialPosition.x + mousePos.x * maxOffset.x - camera.position.x) * 0.05;
     camera.position.y += (initialPosition.y + mousePos.y * maxOffset.y - camera.position.y) * 0.05;
     camera.position.z += (initialPosition.z + mousePos.x * maxOffset.z - camera.position.z) * 0.05;

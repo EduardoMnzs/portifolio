@@ -34,7 +34,7 @@ const Carousel = () => {
 
   const settings = {
     infinite: false,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 5,
     slidesToScroll: 1,
     swipeToSlide: true,
@@ -145,7 +145,6 @@ const Carousel = () => {
     { id: 4, profile: 'fas fa-atom', title: 'Piveta System', content: 'Content 4', technology1: 'JS', technology2: 'HTML', technology3: 'CSS', technologyplus: '+', img: './static/img/piveta.png', text: 'Piveta System is a multi-tool project designed to accelerate processes with a wide range of functions. Built with Python, Flask, and PostgreSQL, it provides an efficient and flexible solution for various tasks, streamlining workflows and enhancing productivity.' },
 
     { id: 5, profile: 'fas fa-calculator', title: 'Calculator Free Market', content: 'Content 5', technology1: 'React Native', technology2: 'Android', technology3: 'IOS', technologyplus: '+', img: './static/img/ml.png', text: 'Calculator Free Market is a project that helps track product prices, calculate profits, expenses, and more. Built with React Native, it provides an intuitive tool for sellers to monitor and manage their product values, ensuring better financial control and decision-making.' },
-
 
     { id: 6, profile: 'fas fa-seedling', title: 'Projeto Y', content: 'Content 6', technology1: 'JS', technology2: 'HTML', technology3: 'CSS', technologyplus: '+', img: 'https://via.placeholder.com/350x200', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet tempor placerat. Mauris vel ipsum et est iaculis fringilla. Vestibulum aliquet consectetur aliquam. Sed arcu lectus, dapibus quis enim quis, molestie convallis urna.' },
 

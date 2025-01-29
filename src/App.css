@@ -344,7 +344,10 @@ html,
 
 .contact-container {
   max-width: 500px;
-  margin: 30px 225px;
+  margin-left: 10%; /* Distanciamento de 5% da esquerda */
+  margin-right: 15px; /* Mantém o espaçamento à direita */
+  margin-top: 15px; /* Distanciamento no topo */
+  margin-bottom: 15px; /* Distanciamento na parte inferior */
   background: #f9f5f0;
   padding: 30px;
   border-radius: 15px;
@@ -420,7 +423,7 @@ html,
 .footer-container {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: -21px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -512,6 +515,11 @@ html,
   .section-subtitle {
     font-size: 1.2em;
     margin-left: 35px;
+  }
+
+  .contact-container {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 }
 

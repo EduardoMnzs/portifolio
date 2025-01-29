@@ -61,7 +61,7 @@ svg text {
 .animated-rect {
   transform: scale(0);
   transform-origin: center;
-  animation: Slide 3s ease 0s normal both infinite;
+  animation: Slide 3s ease 0s normal both;
   animation-delay: 1.2s;
 }
 
